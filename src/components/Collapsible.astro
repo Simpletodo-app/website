@@ -1,0 +1,30 @@
+---
+import { getUniqueId } from "../common/utils";
+
+interface Props {
+  title: string;
+}
+
+const id = getUniqueId("collapsible");
+const { title } = Astro.props;
+---
+
+<div class="border-b border-gray-300 pb-4">
+  <button
+    data-collapsible-id={id}
+    class="w-full text-left text-base font-semibold text-gray-800 focus:outline-none"
+  >
+    {title}
+  </button>
+  <p id={id} class="text-base mt-2 text-gray-600 hidden">
+    <slot />
+  </p>
+</div>
+
+<script define:vars={{ id }}>
+  const button = document.querySelector(`button[data-collapsible-id="${id}"]`);
+  button?.addEventListener("click", () => {
+    const answer = document.getElementById(id);
+    answer?.classList.toggle("hidden");
+  });
+</script>

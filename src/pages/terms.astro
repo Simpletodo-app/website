@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Simpletodo.app: Terms of Service">
+  <Nav />
+  <main>
+    <section class="bg-white py-12 px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-normal text-center mb-8">Terms of Service</h2>
+
+        <div class="mb-8">
+          <h3 class="text-base font-semibold mb-4">Support</h3>
+          <p>
+            If you experience any issues or require assistance with the app,
+            please feel free to create an issue in our <a
+              href="https://github.com/simpletodo-app/simpletodo.app/issues"
+              class="text-blue-500 hover:underline">Github repo</a
+            >.
+          </p>
+        </div>
+
+        <div class="mb-8">
+          <h3 class="text-base font-semibold mb-4">Changes to Terms</h3>
+          <p>
+            We reserve the right to update these Terms of Service. In the event
+            of significant changes, we will notify users through the app.
+            Continued use of the app after changes are posted constitutes your
+            acceptance of the updated terms.
+          </p>
+          <p class="mt-8">Last updated: Oct. 25, 2024</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

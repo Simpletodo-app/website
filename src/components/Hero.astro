@@ -1,0 +1,23 @@
+---
+import { macDownloadLink } from "../common/utils";
+import LinkButton from "./LinkButton.astro";
+---
+
+<section class="py-16">
+  <div class="container mx-auto text-center">
+    <!-- Headline -->
+    <h1 class="text-4xl font-normal leading-tight md:text-5xl mb-6">
+      Stay Organized. Stay Productive.<br class="hidden md:inline" />Manage
+      Tasks with Ease.
+    </h1>
+
+    <!-- Descriptive Text -->
+    <p class="text-base text-gray-600 max-w-2xl mx-auto mb-10">
+      Redefine productivity. Keep tasks in check, move completed items, and
+      organize projects—all while staying focused on what’s next.
+    </p>
+
+    <!-- Download Button -->
+    <LinkButton href={macDownloadLink}> Download the App (Mac) </LinkButton>
+  </div>
+</section>

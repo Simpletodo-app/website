@@ -1,0 +1,100 @@
+---
+import { FolderArchive, Paintbrush, ListTodo } from "lucide-astro";
+import WhyUsSolutionItem from "./WhyUsSolutionItem.astro";
+---
+
+<section id="why" class="py-16">
+  <div class="container mx-auto px-4 max-w-6xl sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-normal text-center mb-4">Why Simpletodo.app?</h2>
+    <!-- <p class="text-base text-gray-600 text-center mb-8">A Todo App Built for Simplicity and Focus</p> -->
+
+    <!-- Story Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <!-- The Problem Section with Image -->
+      <div
+        class="rounded-lg shadow-lg md:order-2"
+        style="background-color: #2a2a28;"
+      >
+        <img
+          src="./apple-note.png"
+          alt="Managing Tasks with Apple Notes"
+          class="rounded-lg h-[400px]"
+        />
+      </div>
+      <div class="md:order-1">
+        <h3 class="text-xl font-normal mb-4">
+          The Problem: Managing Tasks with Apple Notes
+        </h3>
+        <p class="text-gray-600 text-base">
+          I really liked using Apple Notes because of its simplicity. It helped
+          me track everything I did at work and for personal projects daily or
+          weekly. However, I found myself manually managing tasks—creating a new
+          note each day or week, moving uncompleted tasks to the new note, and
+          leaving completed ones behind. While this system worked, it became
+          tedious to repeat this process regularly.
+        </p>
+      </div>
+    </div>
+
+    <!-- The Solution Section -->
+    <div class="mt-16">
+      <ul
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 list-none text-lg text-gray-600"
+      >
+        <li class="flex items-start mt-6">
+          <WhyUsSolutionItem
+            title="Note-like Simplicity"
+            description="Simpletodo.app is designed to be as simple and intuitive as Apple Notes, allowing you to quickly jot down tasks without any distractions."
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              slot="icon"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-notepad-text"
+              ><path d="M8 2v4"></path><path d="M12 2v4"></path><path
+                d="M16 2v4"></path><rect
+                width="16"
+                height="18"
+                x="4"
+                y="4"
+                rx="2"></rect><path d="M8 10h6"></path><path d="M8 14h8"
+              ></path><path d="M8 18h5"></path></svg
+            >
+          </WhyUsSolutionItem>
+        </li>
+        <li class="flex items-start mt-6">
+          <WhyUsSolutionItem
+            title="Daily or Weekly Cleanup"
+            description="Simpletodo.app automates the task of moving uncompleted items to a fresh list with the current date, helping you stay focused without clutter."
+          >
+            <Paintbrush class="w-5 h-5" slot="icon" />
+          </WhyUsSolutionItem>
+        </li>
+
+        <li class="flex items-start mt-6">
+          <WhyUsSolutionItem
+            title="Progress Tracking for Standups"
+            description="When you need to update your team or check your progress, Simpletodo makes it easy to look back at completed tasks, without digging through multiple notes."
+          >
+            <ListTodo class="w-5 h-5" slot="icon" />
+          </WhyUsSolutionItem>
+        </li>
+
+        <li class="flex items-start mt-6">
+          <WhyUsSolutionItem
+            title="A Tool for Promotion & Project References"
+            description="Simpletodo.app keeps a clear record of your work. This has been invaluable for me when preparing for promotions, documenting progress, or referencing completed tasks and conversations from previous projects."
+          >
+            <FolderArchive class="w-5 h-5" slot="icon" />
+          </WhyUsSolutionItem>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

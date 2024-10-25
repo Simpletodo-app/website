@@ -1,0 +1,39 @@
+---
+import Collapsible from "./Collapsible.astro";
+---
+
+<section id="faq" class="py-16">
+  <div class="container mx-auto px-4">
+    <!-- FAQ Title -->
+    <h2 class="text-3xl font-normal text-center mb-12">FAQs</h2>
+
+    <!-- FAQ Items -->
+    <div class="max-w-4xl mx-auto space-y-6">
+      <Collapsible title="How do I report bug or issues?">
+        If you experience any issues or require assistance with the app, please
+        feel free to create an issue in our <a
+          class="font-medium text-blue-600"
+          href="https://github.com/simpletodo-app/simpletodo.app/issues"
+        >
+          Github repo
+        </a>
+      </Collapsible>
+
+      <Collapsible title="Is the app available on platforms other than macOS?">
+        At the moment, the app is exclusively available for macOS. We’re
+        exploring the possibility of expanding to other platforms in the future.
+        Stay tuned for updates!
+      </Collapsible>
+
+      <Collapsible title="How secure is my data?">
+        Your privacy is our priority. We don’t collect or track any of your
+        data. The app is designed for offline usage, and none of your todo items
+        are transmitted or stored on external servers. The only data we collect
+        is during license activation. For more details, you can visit our <a
+          class="font-medium text-blue-600"
+          href="/privacy">privacy page</a
+        >.
+      </Collapsible>
+    </div>
+  </div>
+</section>

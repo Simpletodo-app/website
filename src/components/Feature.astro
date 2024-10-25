@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  videoSrc?: string;
+  imgSrc?: string;
+}
+const { title, description, imgSrc, videoSrc } = Astro.props;
+---
+
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <!-- Title -->
+    <h2 class="text-3xl font-normal text-center mb-4">
+      {title}
+    </h2>
+    <!-- Description -->
+    <p class="text-base text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+      {description}
+    </p>
+
+    <!-- Image / GIF / Screenshot -->
+    <div class="relative mx-auto max-w-4xl">
+      {
+        imgSrc && (
+          <img
+            src={imgSrc}
+            alt={`Demo of ${title}`}
+            class="rounded-lg shadow-lg"
+          />
+        )
+      }
+      {
+        videoSrc && (
+          <video
+            src={videoSrc}
+            autoplay
+            loop
+            muted
+            playsinline
+            class="rounded-lg shadow-lg"
+          />
+        )
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Feature from "../components/Feature.astro";
+import Footer from "../components/Footer.astro";
+import Pricing from "../components/Pricing.astro";
+import Faq from "../components/Faq.astro";
+import FeatureTwoUp from "../components/FeatureTwoUp.astro";
+import WhyUs from "../components/WhyUs.astro";
+---
+
+<Layout title="Simpletodo.app">
+  <Nav />
+  <main>
+    <Hero />
+    <div id="features">
+      <Feature
+        title="Seamless Task Management"
+        description="Organize your tasks in a note-like experience with flexible, intuitive tasklists."
+        videoSrc="/note-like-app.mp4"
+      />
+      <FeatureTwoUp
+        title="Organize Completed Tasks"
+        subtitle1="Move Completed Tasks"
+        subtitle2="Organize by Date"
+        description1="Easily move completed tasks to a separate list organized by date and time with a button click."
+        description2="Completed subtasks are automatically moved, while unfinished ones remain for you to continue working on—ensuring your workspace stays focused and clutter-free. Completed tasks are neatly organized by date and time, making it easy to track progress and review your accomplishments at any time"
+        imgSrc1="/completed-1.png"
+        imgSrc2="/completed-2.png"
+      />
+      <Feature
+        title="Carry Over Task Alerts"
+        description="Get notified when tasks are repeatedly carried over, allowing you to re-prioritize or remove them if they are no longer needed—keeping your to-do list focused on what matters most."
+        imgSrc="/carryover-notifier.png"
+      />
+      <Feature
+        title="Project-Based Task Management"
+        description="Group your tasks by project, making it simple to track and manage your progress across different areas."
+        imgSrc="/projects-view.png"
+      />
+      <Feature
+        title="Quick Task Search"
+        description="Find tasks and subtasks instantly across all your projects with a powerful search feature."
+        videoSrc="/searching.mp4"
+      />
+    </div>
+    <Pricing />
+    <Faq />
+    <WhyUs />
+  </main>
+  <Footer />
+</Layout>
