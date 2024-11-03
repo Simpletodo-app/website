@@ -2,4 +2,5 @@
 
 interface ImportMetaEnv {
     SITE_PASSWORD: string;
+    APP_VERSION: string;
 }
