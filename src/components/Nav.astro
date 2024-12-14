@@ -1,9 +1,11 @@
 ---
 import { macDownloadLink } from "../common/utils";
 import LinkButton from "./LinkButton.astro";
+import NavLinkItem from "./NavLinkItem.astro";
+import ThemeIcon from "./ThemeIcon.astro";
 ---
 
-<nav class="bg-white shadow-md sticky top-0 z-50">
+<nav class="shadow-md sticky top-0 z-50 backdrop-blur">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center gap-2">
@@ -15,36 +17,17 @@ import LinkButton from "./LinkButton.astro";
         <!-- Navigation Links -->
         <div class="hidden md:block">
           <div class="flex items-baseline space-x-4">
-            <a
-              href="/why"
-              class="text-gray-800 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Why Simpletodo?
-            </a>
-            <a
-              href="/#features"
-              class="text-gray-800 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Features
-            </a>
-            <a
-              href="/#pricing"
-              class="text-gray-800 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Pricing
-            </a>
-            <a
-              href="/#faq"
-              class="text-gray-800 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              FAQs
-            </a>
+            <NavLinkItem href="/why"> Why Simpletodo? </NavLinkItem>
+            <NavLinkItem href="/#features"> Features </NavLinkItem>
+            <NavLinkItem href="/#pricing"> Pricing </NavLinkItem>
+            <NavLinkItem href="/#faq"> FAQs </NavLinkItem>
           </div>
         </div>
 
         <!-- Try It Button -->
-        <div class="ml-4 flex-shrink-0">
+        <div class="ml-4 flex gap-5 flex-shrink-0">
           <LinkButton href={macDownloadLink}> Download </LinkButton>
+          <ThemeIcon />
         </div>
       </div>
     </div>

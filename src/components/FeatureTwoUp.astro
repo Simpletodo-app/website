@@ -6,7 +6,9 @@ interface Props {
   description1: string;
   description2: string;
   imgSrc1: string;
+  imgSrc1Dark: string;
   imgSrc2: string;
+  imgSrc2Dark: string;
 }
 const {
   title,
@@ -14,6 +16,8 @@ const {
   description2,
   imgSrc1,
   imgSrc2,
+  imgSrc1Dark,
+  imgSrc2Dark,
   subtitle1,
   subtitle2,
 } = Astro.props;
@@ -31,27 +35,33 @@ const {
       <!-- First Column -->
       <div class="flex flex-col justify-center">
         <h2 class="text-xl font-normal mb-4">{subtitle1}</h2>
-        <p class="text-gray-600 text-base">
+        <p class="text-gray-600 dark:text-slate-400 text-base">
           {description1}
         </p>
       </div>
 
       <!-- Second Column -->
       <div class="shadow-lg">
-        <img src={imgSrc1} alt={`Demo of ${subtitle1}`} class="rounded-lg" />
+        <picture>
+          <source srcset={imgSrc1Dark} media="(prefers-color-scheme: dark)" />
+          <img src={imgSrc1} alt={`Demo of ${subtitle1}`} class="rounded-lg" />
+        </picture>
       </div>
     </div>
 
     <div class="mt-10 grid grid-cols-1 md:grid-cols-[1fr_500px] gap-8">
       <!-- First Column -->
       <div class="shadow-lg">
-        <img src={imgSrc2} alt={`Demo of ${subtitle2}`} class="rounded-lg" />
+        <picture>
+          <source srcset={imgSrc2Dark} media="(prefers-color-scheme: dark)" />
+          <img src={imgSrc2} alt={`Demo of ${subtitle2}`} class="rounded-lg" />
+        </picture>
       </div>
 
       <!-- Second Column -->
       <div class="flex flex-col justify-center">
         <h2 class="text-xl font-normal mb-4">{subtitle2}</h2>
-        <p class="text-gray-600 text-base">
+        <p class="text-gray-600 dark:text-slate-400 text-base">
           {description2}
         </p>
       </div>

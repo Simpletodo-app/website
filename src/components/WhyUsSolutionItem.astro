@@ -11,6 +11,6 @@ const { title, description } = Astro.props;
   <slot name="icon" />
 </span>
 <div class="flex flex-col gap-2">
-  <span class="font-normal text-lg text-black">{title}</span>
-  <span class="text-gray-600 text-base">{description}</span>
+  <span class="font-normal text-lg text-black dark:text-white">{title}</span>
+  <span class="text-gray-600 dark:text-slate-400 text-base">{description}</span>
 </div>

@@ -4,8 +4,9 @@ interface Props {
   description: string;
   videoSrc?: string;
   imgSrc?: string;
+  imgSrcDark?: string;
 }
-const { title, description, imgSrc, videoSrc } = Astro.props;
+const { title, description, imgSrc, videoSrc, imgSrcDark } = Astro.props;
 ---
 
 <section class="py-16">
@@ -15,7 +16,9 @@ const { title, description, imgSrc, videoSrc } = Astro.props;
       {title}
     </h2>
     <!-- Description -->
-    <p class="text-base text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+    <p
+      class="text-base text-gray-600 dark:text-slate-400 text-center mb-8 max-w-4xl mx-auto"
+    >
       {description}
     </p>
 
@@ -23,11 +26,14 @@ const { title, description, imgSrc, videoSrc } = Astro.props;
     <div class="relative mx-auto max-w-4xl">
       {
         imgSrc && (
-          <img
-            src={imgSrc}
-            alt={`Demo of ${title}`}
-            class="rounded-lg shadow-lg"
-          />
+          <picture>
+            <source srcset={imgSrcDark} media="(prefers-color-scheme: dark)" />
+            <img
+              src={imgSrc}
+              alt={`Demo of ${title}`}
+              class="rounded-lg shadow-lg"
+            />
+          </picture>
         )
       }
       {

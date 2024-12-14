@@ -31,12 +31,14 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
       <Feature
         title="Carry Over Task Alerts"
         description="Get notified when tasks are repeatedly carried over, allowing you to re-prioritize or remove them if they are no longer needed—keeping your to-do list focused on what matters most."
-        imgSrc="/carryover-notifier.png"
+        imgSrc="/carryover-light.png"
+        imgSrcDark="/carryover-dark.png"
       />
       <Feature
         title="Project-Based Task Management"
         description="Group your tasks by project, making it simple to track and manage your progress across different areas."
-        imgSrc="/projects-view.png"
+        imgSrc="/projects-view-light.png"
+        imgSrcDark="/projects-view-dark.png"
       />
       <Feature
         title="Quick Task Search"
@@ -49,3 +51,73 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
   </main>
   <Footer />
 </Layout>
+
+<!-- Theme configuration - see components/ThemeIcon -->
+<script>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme") ?? "light";
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.documentElement.classList.remove("dark");
+  } else {
+    document.documentElement.classList.add("dark");
+  }
+
+  window.localStorage.setItem("theme", theme);
+  updateSourceMedia(theme);
+
+  const handleToggleClick = () => {
+    const element = document.documentElement;
+    element.classList.toggle("dark");
+
+    const isDark = element.classList.contains("dark");
+    const mode = isDark ? "dark" : "light";
+    localStorage.setItem("theme", mode);
+    updateSourceMedia(mode);
+  };
+
+  document
+    .getElementById("themeToggle")
+    ?.addEventListener("click", handleToggleClick);
+
+  /**
+   * Make <picture> <source> elements with media="(prefers-color-scheme:)"
+   * respect custom theme preference overrides.
+   * Otherwise the `media` preference will only respond to the OS-level setting
+   * source: https://larsmagnus.co/blog/how-to-make-images-react-to-light-and-dark-mode
+   */
+  function updateSourceMedia(colorPreference: "light" | "dark") {
+    const pictures = document.querySelectorAll("picture");
+
+    pictures.forEach((picture) => {
+      const sources: NodeListOf<HTMLSourceElement> = picture.querySelectorAll(`
+          source[media*="prefers-color-scheme"], 
+          source[data-media*="prefers-color-scheme"]
+        `);
+
+      sources.forEach((source) => {
+        // Preserve the source `media` as a data-attribute
+        // to be able to switch between preferences
+        if (source?.media?.includes("prefers-color-scheme")) {
+          source.dataset.media = source.media;
+        }
+
+        // If the source element `media` target is the `preference`,
+        // override it to 'all' to show
+        // or set it to 'none' to hide
+        if (source?.dataset?.media?.includes(colorPreference)) {
+          source.media = "all";
+        } else if (source) {
+          source.media = "none";
+        }
+      });
+    });
+  }
+</script>

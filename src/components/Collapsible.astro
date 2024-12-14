@@ -12,11 +12,11 @@ const { title } = Astro.props;
 <div class="border-b border-gray-300 pb-4">
   <button
     data-collapsible-id={id}
-    class="w-full text-left text-base font-semibold text-gray-800 focus:outline-none"
+    class="w-full text-left text-base font-semibold text-gray-800 dark:text-white focus:outline-none"
   >
     {title}
   </button>
-  <p id={id} class="text-base mt-2 text-gray-600 hidden">
+  <p id={id} class="text-base mt-2 text-gray-600 dark:text-slate-400 hidden">
     <slot />
   </p>
 </div>
