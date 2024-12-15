@@ -5,21 +5,21 @@ interface Props {
   subtitle2: string;
   description1: string;
   description2: string;
-  imgSrc1: string;
-  imgSrc1Dark: string;
-  imgSrc2: string;
-  imgSrc2Dark: string;
+  videoSrc?: string;
+  videoSrcDark?: string;
+  videoSrc2?: string;
+  videoSrc2Dark?: string;
 }
 const {
   title,
   description1,
   description2,
-  imgSrc1,
-  imgSrc2,
-  imgSrc1Dark,
-  imgSrc2Dark,
   subtitle1,
   subtitle2,
+  videoSrc,
+  videoSrcDark,
+  videoSrc2,
+  videoSrc2Dark,
 } = Astro.props;
 ---
 
@@ -42,20 +42,60 @@ const {
 
       <!-- Second Column -->
       <div class="shadow-lg">
-        <picture>
-          <source srcset={imgSrc1Dark} media="(prefers-color-scheme: dark)" />
-          <img src={imgSrc1} alt={`Demo of ${subtitle1}`} class="rounded-lg" />
-        </picture>
+        {
+          videoSrc && (
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              class="rounded-lg shadow-lg dark:hidden"
+              src={videoSrc}
+            />
+          )
+        }
+        {
+          videoSrcDark && (
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              class="rounded-lg hidden dark:block"
+              src={videoSrcDark}
+            />
+          )
+        }
       </div>
     </div>
 
     <div class="mt-10 grid grid-cols-1 md:grid-cols-[1fr_500px] gap-8">
       <!-- First Column -->
       <div class="shadow-lg">
-        <picture>
-          <source srcset={imgSrc2Dark} media="(prefers-color-scheme: dark)" />
-          <img src={imgSrc2} alt={`Demo of ${subtitle2}`} class="rounded-lg" />
-        </picture>
+        {
+          videoSrc && (
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              class="rounded-lg dark:hidden"
+              src={videoSrc2}
+            />
+          )
+        }
+        {
+          videoSrcDark && (
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              class="rounded-lg shadow-lg hidden dark:block"
+              src={videoSrc2Dark}
+            />
+          )
+        }
       </div>
 
       <!-- Second Column -->

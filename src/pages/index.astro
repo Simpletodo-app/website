@@ -17,8 +17,8 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
       <Feature
         title="Seamless Task Management"
         description="Organize your tasks in a note-like experience with flexible, intuitive tasklists."
-        videoSrc="/note-like-app.mp4"
-        videoSrcDark="/searching.mp4"
+        videoSrc="/note-like-light.mp4"
+        videoSrcDark="/note-like-dark.mp4"
       />
       <FeatureTwoUp
         title="Organize Completed Tasks"
@@ -26,8 +26,10 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
         subtitle2="Organize by Date"
         description1="Easily move completed tasks to a separate list organized by date and time with a button click."
         description2="Completed subtasks are automatically moved, while unfinished ones remain for you to continue working on—ensuring your workspace stays focused and clutter-free. Completed tasks are neatly organized by date and time, making it easy to track progress and review your accomplishments at any time"
-        imgSrc1="/completed-1.png"
-        imgSrc2="/completed-2.png"
+        videoSrc="/completed-1-light.mp4"
+        videoSrcDark="/completed-1-dark.mp4"
+        videoSrc2="/completed-2-light.mp4"
+        videoSrc2Dark="/completed-2-dark.mp4"
       />
       <Feature
         title="Carry Over Task Alerts"
@@ -44,7 +46,8 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
       <Feature
         title="Quick Task Search"
         description="Find tasks and subtasks instantly across all your projects with a powerful search feature."
-        videoSrc="/searching.mp4"
+        imgSrc="/searching-light.png"
+        imgSrcDark="/searching-dark.png"
       />
     </div>
     <Pricing />
@@ -95,9 +98,7 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
    * source: https://larsmagnus.co/blog/how-to-make-images-react-to-light-and-dark-mode
    */
   function updateSourceMedia(colorPreference: "light" | "dark") {
-    const pictures = document.querySelectorAll("picture, video");
-
-    console.log("pictures ==>", pictures);
+    const pictures = document.querySelectorAll("picture");
 
     pictures.forEach((picture) => {
       const sources: NodeListOf<HTMLSourceElement> = picture.querySelectorAll(`
