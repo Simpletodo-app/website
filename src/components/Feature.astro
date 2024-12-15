@@ -3,10 +3,12 @@ interface Props {
   title: string;
   description: string;
   videoSrc?: string;
+  videoSrcDark?: string;
   imgSrc?: string;
   imgSrcDark?: string;
 }
-const { title, description, imgSrc, videoSrc, imgSrcDark } = Astro.props;
+const { title, description, imgSrc, videoSrc, imgSrcDark, videoSrcDark } =
+  Astro.props;
 ---
 
 <section class="py-16">
@@ -39,12 +41,24 @@ const { title, description, imgSrc, videoSrc, imgSrcDark } = Astro.props;
       {
         videoSrc && (
           <video
-            src={videoSrc}
             autoplay
             loop
             muted
             playsinline
-            class="rounded-lg shadow-lg"
+            class="rounded-lg shadow-lg dark:hidden"
+            src={videoSrc}
+          />
+        )
+      }
+      {
+        videoSrcDark && (
+          <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="rounded-lg shadow-lg hidden dark:block"
+            src={videoSrcDark}
           />
         )
       }

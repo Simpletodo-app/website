@@ -18,6 +18,7 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
         title="Seamless Task Management"
         description="Organize your tasks in a note-like experience with flexible, intuitive tasklists."
         videoSrc="/note-like-app.mp4"
+        videoSrcDark="/searching.mp4"
       />
       <FeatureTwoUp
         title="Organize Completed Tasks"
@@ -62,7 +63,7 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
       return "dark";
     }
     return "light";
-  })();
+  })() as "light" | "dark";
 
   if (theme === "light") {
     document.documentElement.classList.remove("dark");
@@ -94,7 +95,9 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
    * source: https://larsmagnus.co/blog/how-to-make-images-react-to-light-and-dark-mode
    */
   function updateSourceMedia(colorPreference: "light" | "dark") {
-    const pictures = document.querySelectorAll("picture");
+    const pictures = document.querySelectorAll("picture, video");
+
+    console.log("pictures ==>", pictures);
 
     pictures.forEach((picture) => {
       const sources: NodeListOf<HTMLSourceElement> = picture.querySelectorAll(`
