@@ -23,9 +23,9 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
       <FeatureTwoUp
         title="Organize Completed Tasks"
         subtitle1="Move Completed Tasks"
-        subtitle2="Organize by Date"
-        description1="Easily move completed tasks to a separate list organized by date and time with a button click."
-        description2="Completed subtasks are automatically moved, while unfinished ones remain for you to continue working on—ensuring your workspace stays focused and clutter-free. Completed tasks are neatly organized by date and time, making it easy to track progress and review your accomplishments at any time"
+        subtitle2="Organize as sub-notes"
+        description1="Easily move completed tasks to a separate list with a button click."
+        description2="Completed subtasks are automatically moved, while unfinished ones stay for continued focus. Tasks are organized as sub-notes, making it easy to track progress, review accomplishments, and revisit sub-notes to update any missed tasks."
         videoSrc="/completed-1-light.mp4"
         videoSrcDark="/completed-1-dark.mp4"
         videoSrc2="/completed-2-light.mp4"
@@ -55,73 +55,3 @@ import FeatureTwoUp from "../components/FeatureTwoUp.astro";
   </main>
   <Footer />
 </Layout>
-
-<!-- Theme configuration - see components/ThemeIcon -->
-<script>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme") ?? "light";
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })() as "light" | "dark";
-
-  if (theme === "light") {
-    document.documentElement.classList.remove("dark");
-  } else {
-    document.documentElement.classList.add("dark");
-  }
-
-  window.localStorage.setItem("theme", theme);
-  updateSourceMedia(theme);
-
-  const handleToggleClick = () => {
-    const element = document.documentElement;
-    element.classList.toggle("dark");
-
-    const isDark = element.classList.contains("dark");
-    const mode = isDark ? "dark" : "light";
-    localStorage.setItem("theme", mode);
-    updateSourceMedia(mode);
-  };
-
-  document
-    .getElementById("themeToggle")
-    ?.addEventListener("click", handleToggleClick);
-
-  /**
-   * Make <picture> <source> elements with media="(prefers-color-scheme:)"
-   * respect custom theme preference overrides.
-   * Otherwise the `media` preference will only respond to the OS-level setting
-   * source: https://larsmagnus.co/blog/how-to-make-images-react-to-light-and-dark-mode
-   */
-  function updateSourceMedia(colorPreference: "light" | "dark") {
-    const pictures = document.querySelectorAll("picture");
-
-    pictures.forEach((picture) => {
-      const sources: NodeListOf<HTMLSourceElement> = picture.querySelectorAll(`
-          source[media*="prefers-color-scheme"], 
-          source[data-media*="prefers-color-scheme"]
-        `);
-
-      sources.forEach((source) => {
-        // Preserve the source `media` as a data-attribute
-        // to be able to switch between preferences
-        if (source?.media?.includes("prefers-color-scheme")) {
-          source.dataset.media = source.media;
-        }
-
-        // If the source element `media` target is the `preference`,
-        // override it to 'all' to show
-        // or set it to 'none' to hide
-        if (source?.dataset?.media?.includes(colorPreference)) {
-          source.media = "all";
-        } else if (source) {
-          source.media = "none";
-        }
-      });
-    });
-  }
-</script>
